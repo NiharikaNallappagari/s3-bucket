@@ -1,0 +1,46 @@
+<div class='card'>
+    <div class='card-header'>
+      {{pageTitle}}
+    </div>
+    <div class='card-body'>
+      <div class='row'>
+        <div class='col-md-2'>Objects({{returnedData.length}})</div>
+        <div class='col-md-3'>
+          <button class="btn btn-primary" id="button-download" (click)="download()"><i class="fa fa-download"></i> Download</button>
+        </div>
+      </div>
+      <div class='table-responsive' id="objects-table">
+        <table class='table'
+               *ngIf='returnedData.length>0'>
+          <thead>
+            <tr>
+              <th>
+                <input type="checkbox" (change)="onHeaderCheckboxChange($event.target)" [checked]="headerCheckBox"/>
+              </th>
+              <th>Name</th>
+              <th>Type</th>
+              <th>Last modified</th>
+              <th>Size</th>
+              <th>Storage Class</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor='let object of returnedData | paginate: { itemsPerPage, currentPage: defaultPage }'>
+              <td><input type="checkbox" value={{object.id}} id="rowsCheckBoxes" (change)="onChange(object,$event.target)" [checked]="object.isChecked"/></td>
+              <td *ngIf="object.type==='Folder'"><button id='folder-name' (click)="exploreFolder(object.name)"><i class="fa fa-folder" id="icon-color"></i>  {{object.name}}</button></td>
+              <td id='file-name' *ngIf="object.type!=='Folder'"><i class="fa fa-file" id="icon-color"></i>  {{object.name}}</td>
+              <td>{{object.type}}</td>
+              <td *ngIf='object.modified.length'>{{object.modified}}</td>
+              <td *ngIf='!object.modified.length'>--</td>
+              <td *ngIf='object.size'>{{object.size}}</td>
+              <td *ngIf='!object.size'>--</td>
+              <td>{{object.storage}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+      <div class="card-footer" id="text-center">
+      <pagination-controls (pageChange)="pageChanged($event)"></pagination-controls>
+    </div>
+</div>

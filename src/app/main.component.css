@@ -1,0 +1,67 @@
+
+div.card-header {
+ font-size: large;
+}
+
+div.card {
+  margin-top: 10px
+}
+
+/*
+.bucket{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    color: white;
+    font-weight: 600;
+} */
+
+/* .bucket-header{
+    align-items: center;
+    background-color: #1976d2;
+} */
+
+.card-header{
+    background: #3380FF;
+}
+
+#button-download{
+color: #000000;
+}
+
+#objects-table{
+    margin: 20px 0 20px 0;
+}
+
+#text-center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#folder-name{
+  color: #0073bb;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  background-color:white;
+}
+
+#file-name{
+  color: #0073bb;
+  padding-left: 12px;
+}
+
+#folder-name:hover{
+  text-decoration: underline;
+}
+
+
+#icon-color{
+  color: white;
+ -webkit-text-stroke-width: 1px;
+ -webkit-text-stroke-color: black;
+ border-width: thick;
+}
